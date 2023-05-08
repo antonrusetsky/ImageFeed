@@ -35,7 +35,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WI5-kp-YMs" userLabel="Like Button">
                                                     <rect key="frame" x="356" y="4" width="42" height="42"/>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                    <state key="normal" image="likeOn"/>
+                                                    <state key="normal" image="like_button_on"/>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8 мая 2023" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qZ4-lq-JET" userLabel="Date Label">
                                                     <rect key="frame" x="24" y="196" width="71" height="16"/>
@@ -97,7 +97,7 @@
     </scenes>
     <resources>
         <image name="0" width="200" height="132"/>
-        <image name="likeOn" width="30" height="28"/>
+        <image name="like_button_on" width="30" height="28"/>
         <namedColor name="black">
             <color red="0.10199999809265137" green="0.10599999874830246" blue="0.13300000131130219" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -1,9 +1,3 @@
-//
-//  AppDelegate.swift
-//  ImageFeed
-//
-//
-
 import UIKit
 
 @main
