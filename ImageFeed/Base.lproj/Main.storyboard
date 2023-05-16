@@ -31,37 +31,42 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" image="0" translatesAutoresizingMaskIntoConstraints="NO" id="Cb2-tj-rlm" userLabel="Cell Image">
                                                     <rect key="frame" x="16" y="4" width="382" height="216"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="16"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WI5-kp-YMs" userLabel="Like Button">
-                                                    <rect key="frame" x="356" y="4" width="42" height="42"/>
-                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                    <state key="normal" image="likeOn"/>
-                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8 мая 2023" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qZ4-lq-JET" userLabel="Date Label">
                                                     <rect key="frame" x="24" y="196" width="71" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" name="white"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WI5-kp-YMs" userLabel="Like Button">
+                                                    <rect key="frame" x="354" y="4" width="44" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="44" id="Z1Q-Va-bMd"/>
+                                                        <constraint firstAttribute="height" constant="44" id="yrl-Jy-cOO"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal" image="like_button_on"/>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
+                                                <constraint firstItem="WI5-kp-YMs" firstAttribute="top" secondItem="Cb2-tj-rlm" secondAttribute="top" id="1ez-IR-dLE"/>
                                                 <constraint firstItem="Cb2-tj-rlm" firstAttribute="bottom" secondItem="qZ4-lq-JET" secondAttribute="bottom" constant="8" id="1nt-vx-wbo"/>
                                                 <constraint firstAttribute="bottom" secondItem="Cb2-tj-rlm" secondAttribute="bottom" constant="4" id="7oq-hh-kem"/>
                                                 <constraint firstItem="Cb2-tj-rlm" firstAttribute="top" secondItem="arn-nB-8k2" secondAttribute="top" constant="4" id="GJ4-FV-61O"/>
-                                                <constraint firstItem="WI5-kp-YMs" firstAttribute="top" secondItem="Cb2-tj-rlm" secondAttribute="top" id="JKO-ex-JaL"/>
                                                 <constraint firstItem="Cb2-tj-rlm" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qZ4-lq-JET" secondAttribute="trailing" constant="8" id="cOT-RQ-8Qu"/>
-                                                <constraint firstItem="Cb2-tj-rlm" firstAttribute="trailing" secondItem="WI5-kp-YMs" secondAttribute="trailing" id="jIa-HE-dgs"/>
                                                 <constraint firstAttribute="trailing" secondItem="Cb2-tj-rlm" secondAttribute="trailing" constant="16" id="oYd-ey-qL2"/>
+                                                <constraint firstItem="WI5-kp-YMs" firstAttribute="trailing" secondItem="Cb2-tj-rlm" secondAttribute="trailing" id="shC-u0-wlk"/>
                                                 <constraint firstItem="qZ4-lq-JET" firstAttribute="leading" secondItem="Cb2-tj-rlm" secondAttribute="leading" constant="8" id="vBU-Aw-YYz"/>
                                                 <constraint firstItem="Cb2-tj-rlm" firstAttribute="leading" secondItem="arn-nB-8k2" secondAttribute="leading" constant="16" id="xay-VJ-rxA"/>
                                             </constraints>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                    <integer key="value" value="16"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                            </userDefinedRuntimeAttributes>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.1019607843" green="0.1058823529" blue="0.1333333333" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
@@ -97,7 +102,7 @@
     </scenes>
     <resources>
         <image name="0" width="200" height="132"/>
-        <image name="likeOn" width="30" height="28"/>
+        <image name="like_button_on" width="30" height="28"/>
         <namedColor name="black">
             <color red="0.10199999809265137" green="0.10599999874830246" blue="0.13300000131130219" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
