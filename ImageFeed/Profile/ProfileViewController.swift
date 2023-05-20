@@ -20,7 +20,7 @@ final class ProfileViewController: UIViewController {
         avatarImageView(safeArea: view.safeAreaLayoutGuide)
         nameLabelView(safeArea: view.safeAreaLayoutGuide)
         loginNameLabelView(safeArea: view.safeAreaLayoutGuide)
-        descriptionLabelView(safeArea: view.safeAreaLayoutGuide)
+        setupDescriptionLabel(safeArea: view.safeAreaLayoutGuide)
         logoutButtonView(safeArea: view.safeAreaLayoutGuide)
     }
     
@@ -62,7 +62,7 @@ final class ProfileViewController: UIViewController {
         loginNameLabel.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor).isActive = true
     }
     
-    private func descriptionLabelView(safeArea: UILayoutGuide) {
+    private func setupDescriptionLabel(safeArea: UILayoutGuide) {
         descriptionLabel = UILabel()
         descriptionLabel.text = "Hello, world!"
         descriptionLabel.textColor = .white
@@ -77,11 +77,10 @@ final class ProfileViewController: UIViewController {
     
     private func logoutButtonView(safeArea: UILayoutGuide) {
         logoutButton = UIButton.systemButton(
-            with: UIImage(named: "logout_button") ?? UIImage(),
+            with: UIImage(named: "logout_button") ?? UIImage().withRenderingMode(.alwaysOriginal),
             target: self,
             action: nil
         )
-        logoutButton.tintColor = .red
         logoutButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(logoutButton)
         

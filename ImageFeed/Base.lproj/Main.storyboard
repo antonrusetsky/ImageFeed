@@ -131,7 +131,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="Ee7-it-WlN"/>
-                        <color key="backgroundColor" red="0.10196078431372549" green="0.10588235294117647" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" name="black"/>
+                        <color key="tintColor" name="red"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="tab_profile_active" selectedImage="tab_profile_active" id="BNW-Md-c2f"/>
                 </viewController>
@@ -214,7 +215,6 @@
         <!--Navigation Controller-->
         <scene sceneID="uIA-1r-jvG">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1CI-oR-82O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hcY-iu-tkN" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="tab_editorial_active" selectedImage="tab_editorial_active" id="UBB-gR-mR4">
                         <color key="badgeColor" name="gray"/>
@@ -234,6 +234,7 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="igW-s7-BAG"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1CI-oR-82O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-459.4202898550725" y="-682.36607142857144"/>
         </scene>
@@ -250,6 +251,9 @@
         </namedColor>
         <namedColor name="gray">
             <color red="0.90200001001358032" green="0.9100000262260437" blue="0.92199999094009399" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="red">
+            <color red="0.96100002527236938" green="0.41999998688697815" blue="0.42399999499320984" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="white">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
