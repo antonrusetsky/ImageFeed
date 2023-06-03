@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class ProfileViewController: UIViewController {
     private var avatarImage: UIImageView!
@@ -13,6 +14,10 @@ final class ProfileViewController: UIViewController {
     private var loginNameLabel: UILabel!
     private var descriptionLabel: UILabel!
     private var logoutButton: UIButton!
+    
+    private let profileService = ProfileService.shared
+    private let profileImageService = ProfileImageService.shared
+    private var profileImageServiceObserver: NSObjectProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +27,42 @@ final class ProfileViewController: UIViewController {
         loginNameLabelView(safeArea: view.safeAreaLayoutGuide)
         setupDescriptionLabel(safeArea: view.safeAreaLayoutGuide)
         logoutButtonView(safeArea: view.safeAreaLayoutGuide)
+        
+        updateProfileDetails(profile: profileService.profile)
+        updateAvatar()
+        checkForAvatarUpdates()
+    }
+    
+    private func updateProfileDetails(profile: Profile?) {
+        if let profile = profile {
+            nameLabel.text = profile.name
+            loginNameLabel.text = profile.loginName
+            descriptionLabel.text = profile.bio
+        } else {
+            nameLabel.text = "Error"
+            loginNameLabel.text = "Error"
+            descriptionLabel.text = "Error"
+        }
+    }
+    
+    private func updateAvatar() {
+        guard let profileImageURL = profileImageService.avatarURL,
+              let url = URL(string: profileImageURL)
+        else { return }
+        let placeholderImage = UIImage(systemName: "avatar")
+        avatarImage.kf.setImage(with: url, placeholder: placeholderImage)
+    }
+    
+    private func checkForAvatarUpdates() {
+        profileImageServiceObserver = NotificationCenter.default.addObserver(
+            forName: ProfileImageService.didChangeNotification,
+            object: nil,
+            queue: .main
+        ) { [weak self] _ in
+            guard let self = self else { return }
+            self.updateAvatar()
+        }
+        updateAvatar()
     }
     
     private func avatarImageView(safeArea: UILayoutGuide) {
@@ -77,13 +118,12 @@ final class ProfileViewController: UIViewController {
     
     private func logoutButtonView(safeArea: UILayoutGuide) {
         logoutButton = UIButton.systemButton(
-            with: UIImage(named: "logout_button") ?? UIImage().withRenderingMode(.alwaysOriginal),
+            with: (UIImage(named: "logout_button") ?? UIImage()).withRenderingMode(.alwaysOriginal),
             target: self,
             action: nil
         )
         logoutButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(logoutButton)
-        
         logoutButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
         logoutButton.centerYAnchor.constraint(equalTo: avatarImage.centerYAnchor).isActive = true
     }
