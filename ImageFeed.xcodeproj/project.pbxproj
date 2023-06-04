@@ -121,8 +121,6 @@
 				D241C2CA2A1E3BF00008E518 /* Constants.swift */,
 				D22E70E22A289DCA0098A71C /* UIBlockingProgressHUD.swift */,
 				D20032662A29F74200DA6CFC /* URLSession.swift */,
-				D20032642A29F03B00DA6CFC /* ProfileService.swift */,
-				D20032682A2A37EF00DA6CFC /* ProfileImageService.swift */,
 				D20032702A2B122300DA6CFC /* TabBarController.swift */,
 				D241C2DC2A1FD5090008E518 /* SplashView */,
 				D241C2D02A1E4C3F0008E518 /* Auth */,
@@ -150,6 +148,8 @@
 		D2E48A542A13A696003A3355 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				D20032682A2A37EF00DA6CFC /* ProfileImageService.swift */,
+				D20032642A29F03B00DA6CFC /* ProfileService.swift */,
 				D2E48A552A13A6AB003A3355 /* ProfileViewController.swift */,
 			);
 			path = Profile;
