@@ -42,10 +42,13 @@ class SplashViewController: UIViewController {
     }
     
     private func switchToTabBarController() {
-        guard let window = UIApplication.shared.windows.first else {fatalError("Invalid Configuration")}
-        let tapBarController = UIStoryboard(name: "Main", bundle: .main)
-            .instantiateViewController(withIdentifier: "TabBarViewController")
-        window.rootViewController = tapBarController
+        guard let window = UIApplication.shared.windows.first else {
+                    assertionFailure("Invalid config")
+                    showAlertViewController()
+                    return
+                }
+        let tabBarController = TabBarController()
+        window.rootViewController = tabBarController
     }
     
     private func presentAuthViewController() {

@@ -5,7 +5,7 @@
 //  Created by Anton Rusetsky on 24.05.2023.
 //
 
-import Foundation
+import UIKit
 
 let accessKey = "8-wOYGKZcehIvOdRXwwC6675_j_DQR8Gp_EWnOfbmyo"
 let secretKey = "h2j4w5k0fq5TshZ6aPoufLWndrkU5kLTfi3T49Bo3iw"

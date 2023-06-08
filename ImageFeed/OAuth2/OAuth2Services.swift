@@ -24,7 +24,6 @@ final class OAuth2Services {
         }
     }
     
-    
     func fetchOAuthToken(_ code: String, completion: @escaping(Result<String, Error>) -> Void ) {
         assert(Thread.isMainThread)
         if lastCode == code {return}
@@ -88,7 +87,6 @@ extension OAuth2Services {
             case createdAt = "created_at"
         }
     }
-    
 }
 
 extension URLRequest {
