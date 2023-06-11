@@ -7,6 +7,9 @@
 
 import UIKit
 import Kingfisher
+import ProgressHUD
+import SwiftKeychainWrapper
+import WebKit
 
 final class ProfileViewController: UIViewController {
     private var avatarImage: UIImageView!
@@ -18,10 +21,11 @@ final class ProfileViewController: UIViewController {
     private let profileService = ProfileService.shared
     private let profileImageService = ProfileImageService.shared
     private var profileImageServiceObserver: NSObjectProtocol?
+    private let tokenStorage = OAuth2TokenStorage()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.backgroundColor = .black
         avatarImageView(safeArea: view.safeAreaLayoutGuide)
         nameLabelView(safeArea: view.safeAreaLayoutGuide)
         loginNameLabelView(safeArea: view.safeAreaLayoutGuide)
@@ -50,7 +54,8 @@ final class ProfileViewController: UIViewController {
               let url = URL(string: profileImageURL)
         else { return }
         let placeholderImage = UIImage(systemName: "avatar")
-        avatarImage.kf.setImage(with: url, placeholder: placeholderImage)
+        let processor = RoundCornerImageProcessor(radius: .point(50))
+        avatarImage.kf.setImage(with: url, placeholder: placeholderImage, options: [.processor(processor)])
     }
     
     private func checkForAvatarUpdates() {
@@ -123,8 +128,36 @@ final class ProfileViewController: UIViewController {
             action: nil
         )
         logoutButton.translatesAutoresizingMaskIntoConstraints = false
+        logoutButton.addTarget(nil, action: #selector(logoutButtonTapped), for: .touchUpInside)
         view.addSubview(logoutButton)
         logoutButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
         logoutButton.centerYAnchor.constraint(equalTo: avatarImage.centerYAnchor).isActive = true
+    }
+    
+    private func profileLogout() {
+        tokenStorage.deleteToken()
+        UIBlockingProgressHUD.show()
+        HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
+        WKWebsiteDataStore.default().fetchDataRecords(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes()) { records in
+            records.forEach { record in
+                WKWebsiteDataStore.default().removeData(ofTypes: record.dataTypes, for: [record], completionHandler: {})
+            }
+        }
+        let window = UIApplication.shared.windows.first
+        let splashViewController = SplashViewController()
+        window?.rootViewController = splashViewController
+        UIBlockingProgressHUD.dismiss()
+    }
+    
+    @objc private func logoutButtonTapped() {
+        let alert = UIAlertController(title: "Пока, пока!", message: "Уверены что хотите выйти?", preferredStyle: .alert)
+        let noAction = UIAlertAction(title: "Нет", style: .cancel, handler: nil)
+        let yesAction = UIAlertAction(title: "Да", style: .default) { [weak self] _ in
+            guard let self = self else {return}
+            self.profileLogout()
+        }
+        alert.addAction(yesAction)
+        alert.addAction(noAction)
+        present(alert, animated: true, completion: nil)
     }
 }
