@@ -85,6 +85,7 @@ final class ProfileViewController: UIViewController {
     private func nameLabelView(safeArea: UILayoutGuide) {
         nameLabel = UILabel()
         nameLabel.text = "Екатерина Новикова"
+        nameLabel.accessibilityIdentifier = "NameLabel"
         nameLabel.textColor = .white
         nameLabel.font = UIFont.boldSystemFont(ofSize: 23)
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -98,6 +99,7 @@ final class ProfileViewController: UIViewController {
     private func loginNameLabelView(safeArea: UILayoutGuide) {
         loginNameLabel = UILabel()
         loginNameLabel.text = "@ekaterina_nov"
+        loginNameLabel.accessibilityIdentifier = "LoginNameLabel"
         loginNameLabel.textColor = .gray
         loginNameLabel.font = UIFont.systemFont(ofSize: 13, weight: .regular)
         loginNameLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -128,6 +130,7 @@ final class ProfileViewController: UIViewController {
             action: nil
         )
         logoutButton.translatesAutoresizingMaskIntoConstraints = false
+        logoutButton.accessibilityIdentifier = "LogoutButton"
         logoutButton.addTarget(nil, action: #selector(logoutButtonTapped), for: .touchUpInside)
         view.addSubview(logoutButton)
         logoutButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
